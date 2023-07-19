@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  nest-api-gateway:
+    build:
+      dockerfile: ./apps/nest-api-gateway/Dockerfile
+      context: .
+      target: development
+    volumes:
+      - .:/usr/src/app
+    command: npm run start:dev nest-api-gateway
+    ports:
+      - 3000:3000
+  nest-auth-service:
+    build:
+      dockerfile: ./apps/nest-auth-service/Dockerfile
+      context: .
+      target: development
+    volumes:
+      - .:/usr/src/app
+    command: npm run start:dev nest-auth-service
